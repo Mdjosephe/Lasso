@@ -1,0 +1,88 @@
+---
+title: "TGRalgo"
+author: "Mohamed Abdel Wedoud and Pierre Adeikalam"
+date: "13 février 2020"
+output: html_document
+---
+
+
+```{r}
+
+#delta parameter
+delta = 1.
+
+#p values 
+p_sample = c(2000,2300,2500,2800,3000,3200,350)
+
+#n values as function of p values, n_0 =2000
+n_sample = delta * p_sample
+
+#The result for probabilities of (A_n)^c (complement of A_n)
+proba = c(0.935, 0.975, 0.715, 0.195, 0.055, 0.01, 0.005)
+
+#difference values 
+gamma1 = 1 
+gamma2 = 1.25
+gamma3 = 1.5
+gamma4 = 1.75
+gamma5 = 2
+
+
+#computing 1/n values
+inverse_n = 1 / n_sample
+
+#models to fit to
+v_ml1 = inverse_n ** gamma1
+v_ml2 = inverse_n ** gamma2
+v_ml3 = inverse_n ** gamma3
+v_ml4 = inverse_n ** gamma4
+v_ml5 = inverse_n ** gamma5
+
+
+```
+
+
+
+
+
+```{r}
+#all models
+model1 = lm( proba ~  v_ml1 )
+model2 = lm( proba ~  v_ml2 )
+model3 = lm( proba ~  v_ml3 )
+model4 = lm( proba ~  v_ml4 )
+model5 = lm( proba ~  v_ml5 )
+
+```
+
+
+
+```{r}
+#first model
+summary(model1)
+
+```
+
+
+```{r}
+#second model
+summary(model2)
+
+```
+```{r}
+
+summary(model3)
+
+```
+
+```{r}
+#model 4
+summary(model4)
+
+```
+
+```{r}
+#model 5
+summary(model5)
+
+```
